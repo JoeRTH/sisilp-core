@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "estudiante")
-@PrimaryKeyJoinColumn(referencedColumnName = "IDEPERSONA")
+@PrimaryKeyJoinColumn(referencedColumnName = "IDPERSONA")
 //Para heredar de otra tabla se usa extends - implements para usar/heredar metodos de una interfaz
 public class Estudiante extends Persona {
 
