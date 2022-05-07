@@ -1,45 +1,49 @@
 package edu.ilp.sisgailp.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "estudiante")
+@Table(name="Estudiante")
 @PrimaryKeyJoinColumn(referencedColumnName = "IDPERSONA")
-//Para heredar de otra tabla se usa extends - implements para usar/heredar metodos de una interfaz
-public class Estudiante extends Persona {
-
-    @Column(name = "codigo", length = 10, nullable = false)
-    private String codigo;
-
-    @Column(name = "serie", length = 10)
+public class Estudiante extends Persona{
+    //El Id hereda de la persona
+    @Column(name="codigo", length = 10, nullable = false)
+    private  String codigo;
+    @Column(name="serie",length = 10)
     private String serie;
 
+    //Cascade cuando actulizamos escuela se actualiza estudiante
+    //Eager Retorna datos del estudiante + escuela - Lazy solo retorna datos del estudiante
+    @ManyToOne(optional = false,cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Escuela escuela;
+
+    //Constructor vacio
     public Estudiante() {
     }
 
-    //CONSTRUCTOR
-    public Estudiante(String codigo, String serie) {
+    //Constructor select tod0 despues tod0
+    public Estudiante(String codigo, String serie, Escuela escuela) {
         this.codigo = codigo;
         this.serie = serie;
+        this.escuela = escuela;
     }
 
-    public Estudiante(Long idpersona, String codigo, String serie) {
+    public Estudiante(Long idpersona, String codigo, String serie, Escuela escuela) {
         super(idpersona);
         this.codigo = codigo;
         this.serie = serie;
+        this.escuela = escuela;
     }
 
-    public Estudiante(String nombre, String apellido, int edad, String dni, Date fechaNacimiento, String genero, String codigo, String serie) {
+    public Estudiante(String nombre, String apellido, int edad, String dni, Date fechaNacimiento, String genero, String codigo, String serie, Escuela escuela) {
         super(nombre, apellido, edad, dni, fechaNacimiento, genero);
         this.codigo = codigo;
         this.serie = serie;
+        this.escuela = escuela;
     }
 
-    //GETTERS AND SETTERS
+    //Get and Set
     public String getCodigo() {
         return codigo;
     }
@@ -54,5 +58,13 @@ public class Estudiante extends Persona {
 
     public void setSerie(String serie) {
         this.serie = serie;
+    }
+
+    public Escuela getEscuela() {
+        return escuela;
+    }
+
+    public void setEscuela(Escuela escuela) {
+        this.escuela = escuela;
     }
 }

@@ -1,5 +1,6 @@
 package edu.ilp.sisgailp.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -10,15 +11,17 @@ import java.util.Date;
 @PrimaryKeyJoinColumn(referencedColumnName = "IDPERSONA")
 public class Docente extends Persona{
 
+    @Column(name = "cod_docente", length = 15)
     private String codDocente;
+    @Column(name = "horas_asignadas")
     private Double horasAsignadas;
 
-    //CONSTRUCTOR VACIO
-    public Docente() {
 
+    //Constructor vacio
+    public Docente() {
     }
 
-    //CONSTRUCTOR
+    //Constructor seleccionamos too dos veces
     public Docente(String codDocente, Double horasAsignadas) {
         this.codDocente = codDocente;
         this.horasAsignadas = horasAsignadas;
@@ -36,7 +39,7 @@ public class Docente extends Persona{
         this.horasAsignadas = horasAsignadas;
     }
 
-    //GET AND SET
+    //Get and Set
     public String getCodDocente() {
         return codDocente;
     }
