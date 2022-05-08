@@ -16,10 +16,23 @@ public class PruebaController {
 
     @Autowired
     private IEscuelaService escuelaService;
+
     @GetMapping("/listaEscuelas")
     public List<Escuela> listaEscuelas(){
         return this.escuelaService.listarEscuelas();
     }
+
+    @GetMapping("/buscarEscuelaByCodigo")
+    public Escuela buscarEscuelaByCodigo(@RequestParam String codigo){
+        return this.escuelaService.obtenerEscuelaPorCodigo(codigo);
+    }
+
+    //Consultando por su denominación
+    @GetMapping("/buscarEscuelaByIdAndDenominacion")
+    public Escuela buscarEscuelaByIdAndDenominacion(@RequestParam Long idescuela, @RequestParam String nombre){
+        return this.escuelaService.buscarEscuelaByIdAndDenominacion(idescuela, nombre);
+    }
+
     @GetMapping("/saludo")
     public String saludo(){
             return "HolaZZZzZzzzz";

@@ -20,4 +20,18 @@ public class EscuelaServiceImpl implements IEscuelaService {
     public List<Escuela> listarEscuelas() {
         return this.escuelaDao.findAll();
     }
+
+    //lo implemento llamandolo del service
+    @Override
+    public Escuela obtenerEscuelaPorCodigo(String codigo) {
+        //This. Toma el codigo y lo envia
+        //return this.escuelaDao.findByCodigoEscuela(codigo);
+        //return this.escuelaDao.obtenerEscuelaPorCodigo(codigo);
+        return this.escuelaDao.obtenerEscuelaPorParam(codigo);
+    }
+
+    @Override
+    public Escuela buscarEscuelaByIdAndDenominacion(Long idescuela, String denominacion) {
+        return this.escuelaDao.findByIdescuelaAndDenominacion(idescuela, denominacion);
+    }
 }
