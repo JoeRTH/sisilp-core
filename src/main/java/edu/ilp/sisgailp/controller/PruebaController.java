@@ -16,7 +16,7 @@ public class PruebaController {
 
     @Autowired
     private IEscuelaService escuelaService;
-
+    //GetMapping se usa para buscar listar algo de la BD
     @GetMapping("/listaEscuelas")
     public List<Escuela> listaEscuelas(){
         return this.escuelaService.listarEscuelas();

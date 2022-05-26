@@ -10,12 +10,14 @@ public class Estudiante extends Persona{
     //El Id hereda de la persona
     @Column(name="codigo", length = 10, nullable = false)
     private  String codigo;
+
     @Column(name="serie",length = 10)
     private String serie;
 
     //Cascade cuando actulizamos escuela se actualiza estudiante
     //Eager Retorna datos del estudiante + escuela - Lazy solo retorna datos del estudiante
-    @ManyToOne(optional = false,cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    //@ManyToOne(optional = false,cascade = CascadeType.ALL, fetch = FetchType.LAZY)        -   Clase pasada
+    @ManyToOne(optional = false,fetch = FetchType.LAZY)
     private Escuela escuela;
 
     //Constructor vacio
